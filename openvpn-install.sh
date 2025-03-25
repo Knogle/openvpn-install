@@ -276,9 +276,9 @@ function installQuestions() {
 	# NEW LOGIC:
 	# First, attempt to get a global IPv4 address.
 	######################
-	IP=$(ip -4 addr \
-	     | sed -ne 's|^.* inet \([^/]*\)/.* scope global.*$|\1|p' \
-	     | head -1)
+	IP=$(ip -4 addr |
+		sed -ne 's|^.* inet \([^/]*\)/.* scope global.*$|\1|p' |
+		head -1)
 
 	if [[ -z $IP ]]; then
 		echo "No global IPv4 address was detected on this system."
@@ -1365,4 +1365,3 @@ if [[ -e /etc/openvpn/server.conf && $AUTO_INSTALL != "y" ]]; then
 else
 	installOpenVPN
 fi
-
